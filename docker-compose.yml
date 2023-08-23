@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  tcp-server-1: &server
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app
+    ports:
+      - "8002:8000"
+
+  tcp-server-2:
+    <<: *server
+    ports:
+      - "8003:8000"
